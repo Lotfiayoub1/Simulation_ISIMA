@@ -201,14 +201,16 @@ void uniform(double min, double max){
 void discrete_empirical_distributions(){
     int A=0, B=0, C=0;
     int iteration;
-    printf("entrer le nombre de iteration : ");
+    printf("\nC'est la question a de l'exercice 3\n");
+    printf("Entrer le nombre de iteration : ");
     scanf("%d",&iteration);
     int sum = 0;
     double random_number;
     for (int i = 0; i < iteration; i++)
     {
         random_number = genrand_real3() ;
-        printf("%f\n",random_number);
+        printf("%f  --  ",random_number);
+        if (i%5==4) printf("\n");
         if (random_number < 0.5){
             A++;
         }else if (random_number < 0.6)
@@ -219,7 +221,7 @@ void discrete_empirical_distributions(){
         }
             
     }
-    printf("number of A is %d the percentage obtained for Class A is : %lf\n",A,(A/(double)iteration));
+    printf("\nnumber of A is %d the percentage obtained for Class A is : %lf\n",A,(A/(double)iteration));
     printf("number of B is %d  the percentage obtained for Class B is : %lf\n",B,(B/(double)iteration));
     printf("number of C is %d  the percentage obtained for Class C is : %lf\n",C,(C/(double)iteration));
 
@@ -290,9 +292,10 @@ double *generic_function(int ClasseSize, int IndividualsObservedInEachClass[]){
 /* ------------------------------------------------------------------------ */
 void generic_affichage(double *cumulatifs){
 
+    printf("\nC'est la question b de l'exercice 3\n");
     for (int i = 0; i <6 ; i++)
     {
-        printf("%f\n",cumulatifs[i]);
+        printf("            C[%i] = %f\n",i,cumulatifs[i]);
     }
     
 }
