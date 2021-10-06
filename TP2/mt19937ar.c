@@ -168,11 +168,10 @@ double genrand_res53(void)
 /* -------------------------------------Q2: a-------------------------- */
 /* uniform :  générer 1000 nombres aléatoire entre deux réels.          */
 /*                                                                      */
-/* En entrée: a, b Deux nombres réels.                                  */
+/* En entrée: min, max Deux nombres réels.                              */
 /*                                                                      */
 /* En sortie: afficher 1000 nombres aléatoire entre a et b.             */
 /* -------------------------------------------------------------------- */
-//Q2
 void uniform(double min, double max){
 
     //message explicatif pour les pseudo-random numbers qui s'affiche dans le terminal.
@@ -224,13 +223,76 @@ void discrete_empirical_distributions(){
     printf("number of B is %d  the percentage obtained for Class B is : %lf\n",B,(B/(double)iteration));
     printf("number of C is %d  the percentage obtained for Class C is : %lf\n",C,(C/(double)iteration));
 
-    sum = (A/(double)iteration)+(B/(double)iteration)+(C/(double)iteration);
-    printf("the sum of the percentages is : %d",sum );
+    sum = ((A+B+C)/(double)iteration);
+    printf("the sum of the percentages is : %d\n",sum );
     
 }
 
 /* ------------------------------------------------------------------------ */
 /* -------------------------------------Q3: b------------------------------ */
-/*                                                                          */    
+/*  generic_function() : generic function qui prend des paramètre           */    
+/*                                                                          */
+/* En entrée: ClasseSize    - un entier qui représente  la taille           */ 
+/*                            la taille du tableau des classes              */
+/*            ClasseArray[] - tableau contient le nombre d'individus        */
+/*                            observés dans chaque classe                   */
+/*                                                                          */
+/* En sortie: le poucentage obtenu pour chaque cas                          */
+/*            si le nombre aléatoir est < 0.5 en cumule dans la calsse A    */
+/*            si le nombre aléatoir est < 0.6 en cumule dans la calsse B    */
+/*            sinon  en cumule dans la classe C                             */
+/*            On affiche le pourcentage obtenu pour chaque classe           */    
 /* ------------------------------------------------------------------------ */
 
+double *generic_function(int ClasseSize, int IndividualsObservedInEachClass[]){
+
+    double proba[ClasseSize];
+    double *Cumulatif = calloc(ClasseSize, sizeof(double));
+    int TotalOfObservation = 0;
+
+    //Calculer le totale des observations
+    for (int i = 0; i < ClasseSize; i++)
+    {
+        TotalOfObservation += IndividualsObservedInEachClass[i]; 
+    }
+
+    //Remplir le tableau des cumulatifs
+    for (int i = 0; i < ClasseSize; i++)
+    {
+        proba[i] = IndividualsObservedInEachClass[i]/(double) TotalOfObservation; 
+        // printf("Proba[%d] = %d/%d = %f\n",i,IndividualsObservedInEachClass[i],TotalOfObservation,proba[i]);
+        if (i == 0)
+        {
+            Cumulatif[i] = proba[i];
+            // printf("%f\n",Cumulatif[i]);
+        }
+        else
+        {
+
+            Cumulatif[i] = Cumulatif[i-1]+proba[i];
+            // printf("%f\n",Cumulatif[i]);
+        }
+    }
+    return Cumulatif;
+}
+
+/* ------------------------------------------------------------------------ */
+/* -------------------------------------Q3: b------------------------------ */
+/*  generic_affichage() : qui permet d'afficher le tableau cumulatif qui    */
+/*                        est calculer par la fonction generic_function()   */    
+/*                                                                          */
+/* En entrée: Cumulatif []  - un tableau de double qui contient les         */ 
+/*                             cumulatifs                                   */
+/*                                                                          */
+/* En sortie: affichage du tableau en entrer                                */
+/*            ps: la dérniere case doit être égale à 1 pour qu'il soit      */
+/*                une  loi de probabilité                                   */
+/* ------------------------------------------------------------------------ */
+void generic_affichage(double *cumulatifs){
+
+    for (int i = 0; i <6 ; i++)
+    {
+        printf("%f\n",cumulatifs[i]);
+    }
+    
+}

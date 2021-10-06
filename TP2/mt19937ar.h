@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 
 /* Period parameters */  
@@ -44,3 +45,7 @@ double genrand_res53(void);
 void uniform(double min, double max);
 
 void discrete_empirical_distributions();
+
+double *generic_function(int ClasseSize, int IndividualsObservedInEachClass[]);
+
+void generic_affichage(double *cumulatifs);
