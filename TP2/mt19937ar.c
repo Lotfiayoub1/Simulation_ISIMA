@@ -173,20 +173,42 @@ double genrand_res53(void)
 
 
 
-// uniform function 
+
+/* -------------------------------------------------------------------- */
+/* -------------------------------------Q2: a-------------------------- */
+/* uniform :  générer 1000 nombres aléatoire entre deux réels.          */
+/*                                                                      */
+/* En entrée: a, b Deux nombres réels.                                  */
+/*                                                                      */
+/* En sortie: afficher 1000 nombres aléatoire entre a et b.             */
+/* -------------------------------------------------------------------- */
 //Q2
 void uniform(double min, double max){
 
+    //message explicatif pour les pseudo-random numbers qui s'affiche dans le terminal.
     printf("\n1000 outputs of random pseudo-random numbers between %lf and %lf\n\n", min , max);
     for (int i=0; i<1000; ++i)
-    {
+    {   
+        //affichage du nombre aléatoire générer entre le min et le max.
         printf("%10.8f ", (genrand_real2() * (max - min + 1))+min);
         if (i%5==4) printf("\n");
     }
 }
 
-//Reproduction of discrete empirical distributions
-//Q3 a
+
+/* ------------------------------------------------------------------------ */
+/* -------------------------------------Q3: a------------------------------ */
+/* discrete_empirical_distributions : Calculer de la probabilités cumulées  */
+/*                                    pour les trois classes A,B et C.      */
+/*                                                                          */
+/* En entrée: void                                                          */
+/*                                                                          */
+/* En sortie: le poucentage obtenu pour chaque cas                          */
+/*            si le nombre aléatoir est < 0.5 en cumule dans la calsse A    */
+/*            si le nombre aléatoir est < 0.6 en cumule dans la calsse B    */
+/*            sinon  en cumule dans la classe C                             */
+/*            On affiche le pourcentage obtenu pour chaque classe           */
+/* ------------------------------------------------------------------------ */
 void discrete_empirical_distributions(){
     int A=0, B=0, C=0;
     int iteration;
@@ -216,24 +238,17 @@ void discrete_empirical_distributions(){
     printf("the sum of the percentages is : %d",sum );
     
 }
-//b
 
+/* ------------------------------------------------------------------------ */
+/* -------------------------------------Q3: b------------------------------ */
+/*                                                                          */    
+/* ------------------------------------------------------------------------ */
 
 int main(void)
 {
     int i;
     unsigned long init[4]={0x123, 0x234, 0x345, 0x456}, length=4;
     init_by_array(init, length);
-    /*printf("1000 outputs of genrand_int32()\n");
-    for (i=0; i<1000; i++) {
-      printf("%10lu ", genrand_int32());
-      if (i%5==4) printf("\n");
-    }
-    printf("\n1000 outputs of genrand_real2()\n");
-    for (i=0; i<1000; i++) {
-      printf("%10.8f ", genrand_real2());
-      if (i%5==4) printf("\n");
-    }*/
     
     uniform(-89.2,56.7);
 
