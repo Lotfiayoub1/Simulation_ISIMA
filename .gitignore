@@ -6,3 +6,5 @@ coin_tossing.o
 regular_dice.o 
 lgcs.o
 main.exe
+main1.exe
+.vscode
