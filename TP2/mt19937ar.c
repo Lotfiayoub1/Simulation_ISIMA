@@ -299,3 +299,19 @@ void generic_affichage(double *cumulatifs){
     }
     
 }
+
+
+
+/* ------------------------------------------------------------------------ */
+/* -------------------------------------Q3: b------------------------------ */
+/*  negExp() : Negative exponential law(Average)                            */
+/*                                                                          */
+/*  En entrée : Mean                                                        */
+/*                                                                          */
+/*  En Sortie : un réel                                                     */
+/* ------------------------------------------------------------------------ */
+
+double negExp(double Mean){
+
+    return -Mean*log( 1 - genrand_real3());
+}

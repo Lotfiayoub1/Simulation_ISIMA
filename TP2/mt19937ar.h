@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 
 /* Period parameters */  
@@ -49,3 +50,5 @@ void discrete_empirical_distributions();
 double *generic_function(int ClasseSize, int IndividualsObservedInEachClass[]);
 
 void generic_affichage(double *cumulatifs);
+
+double negExp(double Mean);
