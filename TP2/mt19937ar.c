@@ -199,8 +199,15 @@ void uniform(double min, double max){
 /*            On affiche le pourcentage obtenu pour chaque classe           */
 /* ------------------------------------------------------------------------ */
 void discrete_empirical_distributions(){
-    int A=0, B=0, C=0;
-    int iteration;
+    
+    //la déclaration des trois classes et les initialisées avec 0
+    int     A   =   0,
+            B   =   0,
+            C   =   0;
+
+
+    int     iteration;
+
     printf("\nC'est la question a de l'exercice 3\n");
     printf("Entrer le nombre de iteration : ");
     scanf("%d",&iteration);
@@ -248,9 +255,9 @@ void discrete_empirical_distributions(){
 
 double *generic_function(int ClasseSize, int IndividualsObservedInEachClass[]){
 
-    double proba[ClasseSize];
-    double *Cumulatif = calloc(ClasseSize, sizeof(double));
-    int TotalOfObservation = 0;
+    double          proba[ClasseSize];
+    double       *  Cumulatif           =   calloc(ClasseSize, sizeof(double));
+    int             TotalOfObservation  =   0;
 
     //Calculer le totale des observations
     for (int i = 0; i < ClasseSize; i++)
@@ -303,7 +310,7 @@ void generic_affichage(double *cumulatifs){
 
 
 /* ------------------------------------------------------------------------ */
-/* -------------------------------------Q3: b------------------------------ */
+/* -------------------------------------Q4: a------------------------------ */
 /*  negExp() : Negative exponential law(Average)                            */
 /*                                                                          */
 /*  En entrée : Mean                                                        */
@@ -317,7 +324,7 @@ double negExp(double Mean){
 }
 
 /* ------------------------------------------------------------------------ */
-/* -------------------------------------Q3: b------------------------------ */
+/* -------------------------------------Q4: b------------------------------ */
 /*  test20bins() :  calcule la fréquence des nombres génerer entre          */
 /*                  [0,1];[1,2] ...[19,20] par la fonction negExp           */
 /*                                                                          */
@@ -326,22 +333,28 @@ double negExp(double Mean){
 /*  En Sortie : affichage du Number of occurence Frequence et l'accumulation*/
 /* ------------------------------------------------------------------------ */
 void test20bins(){
-    int Test20bins[21]={0};
-    double frequency[21]={0.};
-    double accumulate[21] = {0.};
 
+
+    int     Test20bins[21]  =   {0};
+    double  frequency[21]   =   {0.};
+    double  accumulate[21]  =   {0.};
+
+    //remplir le tableau des test20bins
     for (int i=0; i<1000000; ++i)
     {
         double negd = negExp(10.);
         int neg = (int) negd;
+        // neg<20? neg : 20 {'explication : if neg < 20 tu vas ajouter dans la case |neg| else tu vas ajouter dans la case 20'}
         (Test20bins[neg<20? neg : 20]) ++;
     }
         printf("\n\nNumber\tFrequency\tAccumulation\n");
 
-
+        // affectation des premiers valeurs de frequency et accumulate pour qu'on puisse commencer a calculer le reste on se basent sur ces valeurs
         frequency[0] = (double) Test20bins[0]/1000000;
         accumulate[0] = frequency[0];
         printf("%d\t%lf\t%lf\n", Test20bins[0],frequency[0],  accumulate[0]);
+
+    //Le calcule des fréquences ainsi que accumulate    
     for (int i=1; i<21; ++i)
     {
         frequency[i] =(double) Test20bins[i]/1000000;   
@@ -350,4 +363,29 @@ void test20bins(){
         
     }
     printf("\n");
+}
+
+/* ------------------------------------------------------------------------ */
+/* -------------------------------------Q5: a------------------------------ */
+/*  commondice() :  Somme les valeurs générées par la fonction              */
+/*                  genrand_real2() avec une modification pour que          */
+/*                  les valeurs soit compris dans [1,6]                     */
+/*                                                                          */
+/*  En entrée :   void                                                      */
+/*                                                                          */
+/*  En Sortie : affichage de la somme                                       */
+/* ------------------------------------------------------------------------ */
+void commondice(){
+    int     sum     =   0;
+
+    //cette boucle permet de calculer la somme de tout les 20 lance du dé.
+    for (int i = 0; i < 20; i++)
+    {
+        sum += (int) (genrand_real2()*6) + 1;
+    }
+
+    //affichage de la somme
+    printf("%d\n", sum);
+    
+
 }

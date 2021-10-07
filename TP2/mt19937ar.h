@@ -54,3 +54,5 @@ void generic_affichage(double *cumulatifs);
 double negExp(double Mean);
 
 void test20bins();
+
+void commondice();
