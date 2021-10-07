@@ -52,3 +52,5 @@ double *generic_function(int ClasseSize, int IndividualsObservedInEachClass[]);
 void generic_affichage(double *cumulatifs);
 
 double negExp(double Mean);
+
+void test20bins();

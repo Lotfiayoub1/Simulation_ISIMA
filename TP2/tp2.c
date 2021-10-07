@@ -9,6 +9,8 @@ int main(int argc, char* argv[]){
     double        * r        =   calloc(6, sizeof(double));
 
     int             MenuInt  = 0;
+    double          sum      = 0.;
+
     
     while (MenuInt != 3)
     {
@@ -32,12 +34,16 @@ int main(int argc, char* argv[]){
                 generic_affichage(r);
                 break;
             case 3:
-                
+                printf("La question b :\n");
                 for (int i = 0; i < 1000000; i++)
                 {
-                    printf("%f --  ",negExp(10));
-                    if (i%5 == 0) printf("\n");
+                    sum += negExp(10);
+                    
                 }
+                printf("%lf\n",sum/1000000);
+
+                printf("La question c :\n");
+                test20bins();
                 
                 break;
             case 4:

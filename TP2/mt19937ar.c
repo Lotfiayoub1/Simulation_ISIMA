@@ -315,3 +315,39 @@ double negExp(double Mean){
 
     return -Mean*log( 1 - genrand_real3());
 }
+
+/* ------------------------------------------------------------------------ */
+/* -------------------------------------Q3: b------------------------------ */
+/*  test20bins() :  calcule la fréquence des nombres génerer entre          */
+/*                  [0,1];[1,2] ...[19,20] par la fonction negExp           */
+/*                                                                          */
+/*  En entrée :   void                                                      */
+/*                                                                          */
+/*  En Sortie : affichage du Number of occurence Frequence et l'accumulation*/
+/* ------------------------------------------------------------------------ */
+void test20bins(){
+    int Test20bins[21]={0};
+    double frequency[21]={0.};
+    double accumulate[21] = {0.};
+
+    for (int i=0; i<1000000; ++i)
+    {
+        double negd = negExp(10.);
+        int neg = (int) negd;
+        (Test20bins[neg<20? neg : 20]) ++;
+    }
+        printf("\n\nNumber\tFrequency\tAccumulation\n");
+
+
+        frequency[0] = (double) Test20bins[0]/1000000;
+        accumulate[0] = frequency[0];
+        printf("%d\t%lf\t%lf\n", Test20bins[0],frequency[0],  accumulate[0]);
+    for (int i=1; i<21; ++i)
+    {
+        frequency[i] =(double) Test20bins[i]/1000000;   
+        accumulate[i] = frequency[i] + accumulate[i-1];
+        printf("%d\t%lf\t%lf\n", Test20bins[i], frequency[i], accumulate[i]);
+        
+    }
+    printf("\n");
+}
