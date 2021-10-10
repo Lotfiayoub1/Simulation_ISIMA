@@ -8,3 +8,6 @@ lgcs.o
 main.exe
 main1.exe
 .vscode
+img
+main.c
+output.exe

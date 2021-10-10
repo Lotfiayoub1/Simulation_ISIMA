@@ -216,8 +216,8 @@ void discrete_empirical_distributions(){
     for (int i = 0; i < iteration; i++)
     {
         random_number = genrand_real3() ;
-        printf("%f  --  ",random_number);
-        if (i%5==4) printf("\n");
+        // printf("%f  --  ",random_number);
+        // if (i%5==4) printf("\n");
         if (random_number < 0.5){
             A++;
         }else if (random_number < 0.6)
@@ -228,9 +228,9 @@ void discrete_empirical_distributions(){
         }
             
     }
-    printf("\nnumber of A is %d the percentage obtained for Class A is : %lf\n",A,(A/(double)iteration));
-    printf("number of B is %d  the percentage obtained for Class B is : %lf\n",B,(B/(double)iteration));
-    printf("number of C is %d  the percentage obtained for Class C is : %lf\n",C,(C/(double)iteration));
+    printf("\nnumber of A is %d the percentage obtained for Class A is : %lf%%\n",A,(A/(double)iteration)*100);
+    printf("number of B is %d  the percentage obtained for Class B is : %lf%%\n",B,(B/(double)iteration)*100);
+    printf("number of C is %d  the percentage obtained for Class C is : %lf%%\n",C,(C/(double)iteration)*100);
 
     sum = ((A+B+C)/(double)iteration);
     printf("the sum of the percentages is : %d\n",sum );
@@ -387,5 +387,21 @@ void commondice(){
     //affichage de la somme
     printf("%d\n", sum);
     
+
+}
+
+
+void Box_Muller(){
+
+    double R1, R2;
+    double X1, X2;
+    R1 = genrand_real1();
+    R2 = genrand_real1();
+
+    X1 =  cos(2*_Pi*R2)*pow((-2*log(R1)),2);
+    X2 =  sin(2*_Pi*R2)*pow((-2*log(R1)),2);
+
+    printf(" X1 = %f et X2 = %f\n", X1, X2);
+
 
 }

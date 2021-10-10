@@ -19,9 +19,9 @@ int main(int argc, char* argv[]){
         printf("* ----------------------------------Menu---------------------------------- *\n");
         printf("| Choisissez l'option qui vous convient                                    |\n");
         printf("| 1 - Q2 : (Generation of uniform random numbers between A and B)          |\n");
-        printf("| 2 - Q3                                                                   |\n");
-        printf("| 3 - Q4                                                                   |\n");
-        printf("| 4 - Q5                                                                   |\n");
+        printf("| 2 - Q3 : (Simulation d'une distribution discrete)                        |\n");
+        printf("| 3 - Q4 : (Simuler la loi exponentielle)                                  |\n");
+        printf("| 4 - Q5 : (Simulation de lois de distribution non reversibles)            |\n");
         printf("| 5 - EXIT                                                                 |\n");
         printf("* ------------------------------------------------------------------------ *\n");
 
@@ -59,7 +59,7 @@ int main(int argc, char* argv[]){
                     
                 }
                 printf("%lf\n",sum/1000000);
-
+                
                 //c
                 printf("La question c :\n");
                 test20bins();
@@ -68,6 +68,7 @@ int main(int argc, char* argv[]){
             //Q5
             case 4:
                 commondice();
+                Box_Muller();
                 break;
 
             // Quitter le menu
