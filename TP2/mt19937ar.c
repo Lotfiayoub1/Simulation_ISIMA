@@ -44,6 +44,8 @@
 #include "mt19937ar.h"
 
 /* initializes mt[N] with a seed */
+static unsigned long mt[N]; /* the array for the state vector  */
+static int mti=N+1; /* mti==N+1 means mt[N] is not initialized */
 void init_genrand(unsigned long s)
 {
     mt[0]= s & 0xffffffffUL;
@@ -255,7 +257,7 @@ void discrete_empirical_distributions(){
 
 double *generic_function(int ClasseSize, int IndividualsObservedInEachClass[]){
 
-    double          proba[ClasseSize];
+    double          proba[10];//ici ca doit être ClasseSize;
     double       *  Cumulatif           =   calloc(ClasseSize, sizeof(double));
     int             TotalOfObservation  =   0;
 

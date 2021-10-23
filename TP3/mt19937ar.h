@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
-
+// #define M_PI 3.14
 /* Period parameters */  
 #define N 624
 #define M 397
@@ -57,3 +56,10 @@ void test20bins();
 void commondice();
 
 void Box_Muller();
+ 
+//TP3
+
+double simPi(int numberOfPoints);
+
+double * diceFunction(int n);
+void RayonDeConfiance(double *T);
