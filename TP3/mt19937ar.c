@@ -200,7 +200,7 @@ double simPi(int numberOfPoints){
     return (PI/(double)numberOfPoints)*4;
 }
 
-/* -----------------------------------Q1: R^2------------------------------ */
+/* -----------------------------------Q2: R^2------------------------------ */
 /*  diceFunction() :                                                        */    
 /*                                                                          */
 /* En entrée: int n : le nombre de fois qu'on lance le Dé                   */
@@ -210,10 +210,12 @@ double simPi(int numberOfPoints){
 /* ------------------------------------------------------------------------ */
 double * diceFunction(int n){
 
-    double *T = calloc(30,sizeof(double));
-    double Test=0.;
-    double Mean = 0;
-    double S2 = 0;
+    double *    T       =   calloc(30,sizeof(double));
+    double      Test    =   0.;
+    double      Mean    =   0;
+    double      S2      =   0;
+
+    //boucle qui permet de stocker les valeurs de pi n fois dans un tableau qui va être retourner 
     for (int i = 0; i < n; i++)
     {
         T[i] = simPi(1000);
@@ -221,39 +223,48 @@ double * diceFunction(int n){
         Mean += T[i];
     }
     
+    //affichage de résultats
     printf("mean_PI : %f\n", Mean/(double) n);
     printf("M_PI : %f\n", M_PI);
     printf("mean_PI - M_PI = %f - %f = %f\n",Mean/(double) n,M_PI,Mean/(double) n-M_PI);
     return T;
 }
 
-/* -----------------------------------Q1: R^2------------------------------ */
+/* -----------------------------------Q3:---------------------------------- */
 /*  RayonDeConfiance() :                                                    */    
 /*                                                                          */
-/* En entrée: double *T : le nombre de lfois qu'on lance le Dé                  */
+/* En entrée: double *T : adresse du tableau                                */
 /*                                                                          */
-/* En sortie: la différence entre Pi générer et PI existe dans la library   */    
-/*              math.h                                                      */    
+/* En sortie: le Rayon de confiance                                         */    
+/*                                                                          */    
 /* ------------------------------------------------------------------------ */
 
 void RayonDeConfiance(double *T){
 
-    double Mean = 0;
-    double S2 = 0;
-    double R = 0;
+    double         Mean     =   0;
+    double         S2       =   0;
+    double         R        =   0;
+
+    //boucle pour calculer l'espérance 
     for (int i = 0; i < 30; i++)
     {
         Mean += T[i]; 
     }
     Mean = Mean/(double) 30;
 
+    //boucle pour calculer la variance corrigé 
     for (int i = 0; i < 30; i++)
     {
         S2 += pow(T[i] - Mean,2);
     }
     
+    // 29 car c'est la variance corrigé 
     S2 = S2/29.;
+
+    //l'erreur
     R = 2.042*sqrt(S2/30.);
+
+    //affichage des données
     printf("R = %f\n",R );
     printf(" le Rayon de confiance : \n");
     printf(" [ X - R , X + R ]\n");
