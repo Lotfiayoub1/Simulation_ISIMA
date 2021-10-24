@@ -206,7 +206,7 @@ double simPi(int numberOfPoints){
 /* En entrée: int n : le nombre de fois qu'on lance le Dé                   */
 /*                                                                          */
 /* En sortie: la différence entre Pi générer et PI existe dans la library   */    
-/*              math.h                                                      */    
+/*              math.h et l'adresse du tabeleau                             */    
 /* ------------------------------------------------------------------------ */
 double * diceFunction(int n){
 

@@ -34,10 +34,10 @@ int main(int argc, char **argv){
             //Q2
             case 2:
                T = diceFunction(30);
-               for (int i = 0; i < 30; i++)
-               {
-                   printf("T[%d] : %f \n",i, T[i]);
-               }
+            //    for (int i = 0; i < 30; i++)
+            //    {
+            //        printf("T[%d] : %f \n",i, T[i]);
+            //    }
                 break;
             //Q3 : Rayon de confiance
             case 3:
